@@ -108,3 +108,28 @@ def test_scan_entry_claude_flagged(monkeypatch):
         lambda entry, source_text: {"verdict": "flagged", "rationale": "bad"})
     result = security_scan.scan_entry(_entry())
     assert result["result"] == "flagged"
+
+
+def test_parse_verdict_handles_code_fence():
+    text = '```json\n{"verdict": "pass", "rationale": "ok"}\n```'
+    assert security_scan._parse_verdict(text)["verdict"] == "pass"
+
+
+def test_parse_verdict_handles_prose_wrapped():
+    text = 'Here is my assessment: {"verdict": "pass", "rationale": "fine"}. Done.'
+    assert security_scan._parse_verdict(text)["verdict"] == "pass"
+
+
+def test_parse_verdict_flagged_in_fence():
+    text = '```\n{"verdict": "flagged", "rationale": "bad"}\n```'
+    assert security_scan._parse_verdict(text)["verdict"] == "flagged"
+
+
+def test_scan_entry_claude_error_is_manual_review(monkeypatch):
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key")
+    monkeypatch.setattr(security_scan, "fetch_source", lambda url: "skill text")
+    monkeypatch.setattr(
+        security_scan, "claude_review",
+        lambda entry, source_text: {"verdict": "error", "rationale": "review unavailable"})
+    result = security_scan.scan_entry(_entry())
+    assert result["result"] == "manual-review"
