@@ -39,8 +39,8 @@ Does a useful thing.
 
 ### Use cases
 
-Thing one
-Thing two
+Size the experiment: baseline, MDE, alpha and power
+Analyze results with the right test
 
 ### Why recommend it
 
@@ -56,7 +56,7 @@ def test_parse_issue_form_maps_labels_and_handles_no_response():
     p = parse_issue_form(BODY)
     assert p["name"] == "my-skill"
     assert p["agents"] == "claude-code, codex"
-    assert p["use_cases"] == "Thing one\nThing two"
+    assert p["use_cases"] == "Size the experiment: baseline, MDE, alpha and power\nAnalyze results with the right test"
     assert p["body"] == ""
 
 
@@ -68,5 +68,9 @@ def test_fields_from_issue_builds_schema_valid_entry():
     entry = {"frontmatter": fm, "body": body, "path": Path("entries/my-skill.md")}
     assert validate_entry(entry, load_schema()) == []
     assert fm["agents"] == ["claude-code", "codex"]
-    assert fm["use_cases"] == ["Thing one", "Thing two"]
+    # a use case containing commas stays ONE item (newline-split, not comma-split)
+    assert fm["use_cases"] == [
+        "Size the experiment: baseline, MDE, alpha and power",
+        "Analyze results with the right test",
+    ]
     assert fm["tags"] == ["ai-productivity", "marketing"]

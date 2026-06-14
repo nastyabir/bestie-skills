@@ -56,9 +56,14 @@ def create_entry(fields, entries_dir=ENTRIES_DIR):
 
 
 def split_list(text):
-    """Split a comma- or newline-separated string into a clean list."""
+    """Split a comma- or newline-separated string into a clean list (for tags/agents)."""
     parts = re.split(r"[,\n]", text or "")
     return [p.strip() for p in parts if p.strip()]
+
+
+def split_lines(text):
+    """Split a newline-separated string into a clean list (for use_cases — commas are kept)."""
+    return [p.strip() for p in (text or "").splitlines() if p.strip()]
 
 
 def slugify(text):
