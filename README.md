@@ -24,7 +24,7 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 
 | Skill | Summary | Agents | Tags | Status | Security |
 | --- | --- | --- | --- | --- | --- |
-| [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md) | Design and analyze A/B tests rigorously — sample-size/MDE calculation plus a full statistical-analysis pipeline that picks the statistically correct test instead of a naive default. | claude-code | ab-testing, statistics, experimentation, data-analysis, product-analytics | `untested` | `manual-review` |
+| [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md) | Design and analyze A/B tests rigorously — sample-size/MDE calculation plus a full statistical-analysis pipeline that picks the statistically correct test instead of a naive default. | claude-code | ab-testing, statistics, experimentation, data-analysis, product-analytics | `tested` | `manual-review` |
 
 ## workflow
 
