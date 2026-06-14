@@ -17,7 +17,9 @@ INJECTION_PATTERNS = [
         r"|disregard\s+(the\s+)?(above|previous)", re.IGNORECASE)),
     ("data-exfiltration", re.compile(
         r"(send|post|exfiltrate|upload|leak)\b[^.\n]{0,40}\b"
-        r"(api[_\s-]?key|token|secret|password|credentials?)", re.IGNORECASE)),
+        r"(api[_\s-]?key|token|secret|password|credentials?)"
+        r"|(api[_\s-]?key|token|secret|password|credentials?)\b[^.\n]{0,40}\b"
+        r"(send|post|exfiltrate|upload|leak)", re.IGNORECASE)),
     ("system-prompt-probe", re.compile(
         r"(reveal|print|repeat|show)\b[^.\n]{0,30}\b(system\s+prompt|instructions)",
         re.IGNORECASE)),
@@ -89,6 +91,16 @@ LINKED SOURCE (may be empty):
 """
 
 
+def _parse_verdict(text):
+    """Parse a model verdict string. Anything not a literal pass -> flagged (fail safe)."""
+    try:
+        data = json.loads(text)
+        verdict = "pass" if data.get("verdict") == "pass" else "flagged"
+        return {"verdict": verdict, "rationale": data.get("rationale", "")}
+    except (json.JSONDecodeError, AttributeError):
+        return {"verdict": "flagged", "rationale": "could not parse review response"}
+
+
 def claude_review(entry, source_text):
     """Call the Anthropic API for a semantic verdict. Requires ANTHROPIC_API_KEY."""
     import anthropic
@@ -108,12 +120,7 @@ def claude_review(entry, source_text):
         messages=[{"role": "user", "content": prompt}],
     )
     text = "".join(block.text for block in msg.content if block.type == "text")
-    try:
-        data = json.loads(text)
-        verdict = "pass" if data.get("verdict") == "pass" else "flagged"
-        return {"verdict": verdict, "rationale": data.get("rationale", "")}
-    except (json.JSONDecodeError, AttributeError):
-        return {"verdict": "flagged", "rationale": "could not parse review response"}
+    return _parse_verdict(text)
 
 
 def scan_entry(entry, *, use_claude=True):
