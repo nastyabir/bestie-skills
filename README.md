@@ -7,7 +7,15 @@ A community-curated, agent-agnostic catalog of useful AI-agent skills
 (Claude Code, Codex, and more). We store **links and metadata only** — never a
 copy of a skill's code. Each entry credits the original author, license, and source.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) to add a skill. Licensed under MIT.
+## Add your skill
+
+Easiest way — **no git needed**: open a
+[New issue → Add a skill](../../issues/new?template=add-skill.yml), fill in the form,
+and submit. A bot validates it, runs the security scan, and opens a pull request for
+review. Host your skill in your own repo or gist; we just link to it.
+
+Prefer the command line or want to do it by hand? Those paths are in
+[CONTRIBUTING.md](CONTRIBUTING.md). Licensed under MIT.
 
 
 ## workflow
