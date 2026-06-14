@@ -84,6 +84,9 @@ def render_readme(entries):
             )
             parts.append(f"- **{tag}** — {links}")
         parts.append("")
+
+    parts.append("---\n")
+    parts.append("Thanks to the **VIBE CODE GANG** community for the idea.")
     return "\n".join(parts).rstrip() + "\n"
 
 

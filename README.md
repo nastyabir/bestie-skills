@@ -42,3 +42,7 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 - **product-analytics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **statistics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **workflow** — [superpowers](https://github.com/obra/superpowers)
+
+---
+
+Thanks to the **VIBE CODE GANG** community for the idea.

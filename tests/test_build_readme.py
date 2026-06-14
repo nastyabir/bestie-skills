@@ -69,3 +69,8 @@ def test_render_links_author_when_url_present():
 def test_render_author_plain_when_no_url():
     out = render_readme([ENTRY_B])
     assert "| b |" in out  # plain author, not a markdown link
+
+
+def test_render_has_community_credit():
+    out = render_readme([ENTRY_A])
+    assert "VIBE CODE GANG" in out
