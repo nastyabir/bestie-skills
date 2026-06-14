@@ -14,6 +14,10 @@ Open a **[New issue → Add a skill](../../issues/new?template=add-skill.yml)**,
 fields, and submit. A bot validates your entry, runs the security scan, and opens a pull
 request for you automatically. A maintainer reviews and merges.
 
+To avoid filling the form by hand, run the
+[describe-skill prompt](prompts/describe-skill.md) in your skill's repo — your agent reads
+the code and generates every field for you.
+
 ## 2. Scaffold script (if you've cloned the repo)
 
 ```bash

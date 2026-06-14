@@ -14,7 +14,9 @@ Easiest way — **no git needed**: open a
 and submit. A bot validates it, runs the security scan, and opens a pull request for
 review. Host your skill in your own repo or gist; we just link to it.
 
-Prefer the command line or want to do it by hand? Those paths are in
+Don't fill the form by hand — use the
+[describe-skill prompt](prompts/describe-skill.md) to have your agent read your repo and
+generate every field. Prefer the command line or doing it by hand? Those paths are in
 [CONTRIBUTING.md](CONTRIBUTING.md). Licensed under MIT.
 
 

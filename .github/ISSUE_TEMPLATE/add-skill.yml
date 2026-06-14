@@ -9,6 +9,9 @@ body:
         Thanks for sharing a skill! We **link** to your skill — we do not copy its code.
         Host it in your own repo or gist and paste the link below. When you submit, a bot
         validates the entry, runs a security scan, and opens a pull request for review.
+
+        **Tip:** don't fill this in by hand — use the [describe-skill prompt](https://github.com/nastyabir/bestie-skills/blob/main/prompts/describe-skill.md)
+        to have your agent read your repo and generate every field below.
   - type: input
     id: name
     attributes:
