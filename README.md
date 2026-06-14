@@ -22,15 +22,15 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 
 ## data
 
-| Skill | Summary | Agents | Tags | Status | Security |
-| --- | --- | --- | --- | --- | --- |
-| [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md) | Design and analyze A/B tests rigorously — sample-size/MDE calculation plus a full statistical-analysis pipeline that picks the statistically correct test instead of a naive default. | claude-code | ab-testing, statistics, experimentation, data-analysis, product-analytics | `tested` | `manual-review` |
+| Skill | Author | Summary | Agents | Tags | Status | Security |
+| --- | --- | --- | --- | --- | --- | --- |
+| [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md) | [nastyabir](https://github.com/nastyabir) | Design and analyze A/B tests rigorously — sample-size/MDE calculation plus a full statistical-analysis pipeline that picks the statistically correct test instead of a naive default. | claude-code | ab-testing, statistics, experimentation, data-analysis, product-analytics | `tested` | `manual-review` |
 
 ## workflow
 
-| Skill | Summary | Agents | Tags | Status | Security |
-| --- | --- | --- | --- | --- | --- |
-| [superpowers](https://github.com/obra/superpowers) | Discipline skills — brainstorming, planning, TDD, debugging, code review. | claude-code | ai-productivity, engineering, workflow | `tested` | `manual-review` |
+| Skill | Author | Summary | Agents | Tags | Status | Security |
+| --- | --- | --- | --- | --- | --- | --- |
+| [superpowers](https://github.com/obra/superpowers) | [obra (Jesse Vincent)](https://github.com/obra) | Discipline skills — brainstorming, planning, TDD, debugging, code review. | claude-code | ai-productivity, engineering, workflow | `tested` | `manual-review` |
 
 ## Browse by topic
 

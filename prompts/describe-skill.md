@@ -19,6 +19,7 @@ Output exactly these fields and nothing else:
 - name: a kebab-case id (lowercase a-z, 0-9, hyphens), e.g. my-cool-skill
 - source_url: the canonical PUBLIC url to the skill (this repo, or the raw skill file)
 - author: name and/or @handle
+- author_url: link to the author's profile (optional, e.g. a GitHub profile)
 - license: the repo's license, or "unknown"
 - agents: which agents it works with — any of: claude-code, codex, cursor, any
 - category: exactly one of: coding, research, writing, data, devops, workflow, meta

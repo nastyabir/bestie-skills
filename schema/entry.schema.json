@@ -11,6 +11,7 @@
     "name": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
     "source_url": { "type": "string", "pattern": "^https?://" },
     "author": { "type": "string", "minLength": 1 },
+    "author_url": { "type": "string", "pattern": "^https?://" },
     "license": { "type": "string", "minLength": 1 },
     "agents": {
       "type": "array",

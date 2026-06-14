@@ -2,6 +2,7 @@
 name: superpowers
 source_url: https://github.com/obra/superpowers
 author: obra (Jesse Vincent)
+author_url: https://github.com/obra
 license: MIT
 agents:
   - claude-code

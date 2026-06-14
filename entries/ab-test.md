@@ -2,6 +2,7 @@
 name: ab-test
 source_url: https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md
 author: nastyabir
+author_url: https://github.com/nastyabir
 license: MIT
 agents:
 - claude-code
@@ -28,7 +29,7 @@ why: 'It encodes a complete, opinionated A/B-testing methodology (the experiment
   statistically correct procedures rather than defaulting to a t-test. It covers the
   failure modes teams actually hit: peeking, non-normal revenue, unequal variances,
   and multiple-comparison inflation.'
-status: untested
+status: tested
 security: manual-review
 added_by: nastyabir
 added_date: '2026-06-14'

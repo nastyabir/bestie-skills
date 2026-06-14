@@ -34,13 +34,20 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 CATEGORY_ORDER = ["coding", "research", "writing", "data", "devops", "workflow", "meta"]
 
 
+def _author(fm):
+    """Render the author, linked to author_url when present."""
+    name = fm["author"]
+    url = fm.get("author_url")
+    return f"[{name}]({url})" if url else name
+
+
 def _row(fm):
     name = fm["name"]
     link = f"[{name}]({fm['source_url']})"
     agents = ", ".join(fm["agents"])
     tags = ", ".join(fm.get("tags", []))
     return (
-        f"| {link} | {fm['summary']} | {agents} | {tags} | "
+        f"| {link} | {_author(fm)} | {fm['summary']} | {agents} | {tags} | "
         f"`{fm['status']}` | `{fm['security']}` |"
     )
 
@@ -57,8 +64,8 @@ def render_readme(entries):
     ordered += [c for c in sorted(by_cat) if c not in CATEGORY_ORDER]
     for cat in ordered:
         parts.append(f"## {cat}\n")
-        parts.append("| Skill | Summary | Agents | Tags | Status | Security |")
-        parts.append("| --- | --- | --- | --- | --- | --- |")
+        parts.append("| Skill | Author | Summary | Agents | Tags | Status | Security |")
+        parts.append("| --- | --- | --- | --- | --- | --- | --- |")
         for fm in sorted(by_cat[cat], key=lambda f: f["name"]):
             parts.append(_row(fm))
         parts.append("")

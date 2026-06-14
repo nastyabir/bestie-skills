@@ -43,6 +43,12 @@ def test_bad_enum_is_reported():
     assert any("category" in e for e in errors)
 
 
+def test_bad_author_url_is_reported():
+    fm = dict(GOOD_FM, author_url="not-a-url")
+    errors = validate_entry(_entry(fm), SCHEMA)
+    assert any("author_url" in e for e in errors)
+
+
 def test_missing_tags_is_reported():
     fm = dict(GOOD_FM)
     del fm["tags"]

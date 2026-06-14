@@ -43,6 +43,7 @@ git push   # then open a PR
    | `name` | kebab-case id, matches the filename |
    | `source_url` | canonical link to the skill (repo or raw file) |
    | `author` | original author + handle |
+   | `author_url` | link to the author's profile (optional) |
    | `license` | the source's license (or `unknown`) |
    | `agents` | any of: `claude-code`, `codex`, `cursor`, `any` |
    | `category` | `coding`, `research`, `writing`, `data`, `devops`, `workflow`, `meta` |

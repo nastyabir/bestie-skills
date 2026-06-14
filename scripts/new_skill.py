@@ -19,8 +19,8 @@ RECOMMENDED_TAGS = ["marketing", "design", "sales", "ai-productivity", "research
                     "data-analysis", "engineering", "writing", "content",
                     "automation", "devops", "product", "finance", "support",
                     "education"]
-FIELD_ORDER = ["name", "source_url", "author", "license", "agents", "category", "tags",
-               "summary", "use_cases", "why", "status", "security",
+FIELD_ORDER = ["name", "source_url", "author", "author_url", "license", "agents",
+               "category", "tags", "summary", "use_cases", "why", "status", "security",
                "added_by", "added_date"]
 _NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 
@@ -97,6 +97,7 @@ def main():
     fields["name"] = _prompt("Skill name (kebab-case)")
     fields["source_url"] = _prompt("Source URL (link to your skill)")
     fields["author"] = _prompt("Author (name / handle)")
+    fields["author_url"] = _prompt("Author URL (profile link, optional)", required=False)
     fields["license"] = _prompt("License (or 'unknown')")
     print(f"Agents — choose from {AGENTS} (comma-separated):")
     agents = []

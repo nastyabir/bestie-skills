@@ -3,6 +3,7 @@ from build_readme import render_readme
 ENTRY_A = {
     "frontmatter": {
         "name": "alpha", "source_url": "https://e.com/a", "author": "a",
+        "author_url": "https://github.com/a",
         "license": "MIT", "agents": ["claude-code"], "category": "coding",
         "tags": ["coding", "ai-productivity"],
         "summary": "Alpha skill.", "use_cases": ["x"], "why": "w",
@@ -58,3 +59,13 @@ def test_render_has_topic_index():
 def test_render_row_includes_tags():
     out = render_readme([ENTRY_A])
     assert "ai-productivity" in out
+
+
+def test_render_links_author_when_url_present():
+    out = render_readme([ENTRY_A])
+    assert "[a](https://github.com/a)" in out
+
+
+def test_render_author_plain_when_no_url():
+    out = render_readme([ENTRY_B])
+    assert "| b |" in out  # plain author, not a markdown link
