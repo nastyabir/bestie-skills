@@ -36,3 +36,10 @@ def test_load_entry_reads_file(tmp_path):
     assert entry["frontmatter"]["name"] == "demo"
     assert entry["path"] == p
     assert "Body line one." in entry["body"]
+
+
+def test_parse_entry_normalizes_unquoted_date():
+    text = "---\nname: demo\nadded_date: 2026-06-15\n---\nbody\n"
+    fm, _ = parse_entry(text)
+    assert fm["added_date"] == "2026-06-15"
+    assert isinstance(fm["added_date"], str)

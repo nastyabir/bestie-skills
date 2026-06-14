@@ -1,9 +1,17 @@
 """Parse and load bestie-skills entry files (YAML frontmatter + markdown body)."""
+import datetime
 from pathlib import Path
 
 import yaml
 
 _DELIM = "---"
+
+
+def _normalize_scalar(value):
+    # PyYAML resolves unquoted ISO dates to datetime.date; the schema wants strings.
+    if isinstance(value, datetime.date) and not isinstance(value, datetime.datetime):
+        return value.isoformat()
+    return value
 
 
 def parse_entry(text):
@@ -20,6 +28,7 @@ def parse_entry(text):
     frontmatter = yaml.safe_load(raw_fm) or {}
     if not isinstance(frontmatter, dict):
         raise ValueError("frontmatter must be a YAML mapping")
+    frontmatter = {k: _normalize_scalar(v) for k, v in frontmatter.items()}
     return frontmatter, body
 
 
