@@ -20,6 +20,12 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 [CONTRIBUTING.md](CONTRIBUTING.md). Licensed under MIT.
 
 
+## data
+
+| Skill | Summary | Agents | Tags | Status | Security |
+| --- | --- | --- | --- | --- | --- |
+| [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md) | Design and analyze A/B tests rigorously — sample-size/MDE calculation plus a full statistical-analysis pipeline that picks the statistically correct test instead of a naive default. | claude-code | ab-testing, statistics, experimentation, data-analysis, product-analytics | `untested` | `manual-review` |
+
 ## workflow
 
 | Skill | Summary | Agents | Tags | Status | Security |
@@ -28,6 +34,11 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 
 ## Browse by topic
 
+- **ab-testing** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **ai-productivity** — [superpowers](https://github.com/obra/superpowers)
+- **data-analysis** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **engineering** — [superpowers](https://github.com/obra/superpowers)
+- **experimentation** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
+- **product-analytics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
+- **statistics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **workflow** — [superpowers](https://github.com/obra/superpowers)
