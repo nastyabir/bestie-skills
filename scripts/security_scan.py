@@ -1,5 +1,8 @@
 """Layered security scan for entries: regex patterns -> source fetch -> Claude review."""
 import re
+from urllib.parse import urlparse
+
+import requests
 
 # (flag name, compiled regex). Case-insensitive where it matters.
 INJECTION_PATTERNS = [
@@ -23,3 +26,36 @@ def scan_text(text):
         if pattern.search(text):
             flags.add(name)
     return sorted(flags)
+
+
+_GH_BLOB = re.compile(
+    r"^https://github\.com/([^/]+)/([^/]+)/blob/(.+)$")
+
+
+def raw_url_for(source_url):
+    """Return a directly-fetchable raw URL for a skill file, or None.
+
+    Handles GitHub blob URLs and plain links to .md files. A repo root (no
+    direct file) returns None -> the entry must go to manual review.
+    """
+    m = _GH_BLOB.match(source_url)
+    if m:
+        owner, repo, rest = m.groups()
+        return f"https://raw.githubusercontent.com/{owner}/{repo}/{rest}"
+    path = urlparse(source_url).path
+    if path.endswith(".md") or "raw.githubusercontent.com" in source_url:
+        return source_url
+    return None
+
+
+def fetch_source(source_url, *, timeout=10):
+    """Fetch raw skill text read-only. Returns text, or None if not fetchable."""
+    raw = raw_url_for(source_url)
+    if raw is None:
+        return None
+    try:
+        resp = requests.get(raw, timeout=timeout)
+        resp.raise_for_status()
+    except requests.RequestException:
+        return None
+    return resp.text

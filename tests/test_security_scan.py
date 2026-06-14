@@ -18,3 +18,25 @@ def test_detects_exfiltration():
 def test_detects_zero_width_characters():
     flags = scan_text("Looks normal​but hides something")
     assert "hidden-characters" in flags
+
+
+from security_scan import raw_url_for
+
+
+def test_raw_url_for_github_blob():
+    url = raw_url_for("https://github.com/obra/superpowers/blob/main/SKILL.md")
+    assert url == "https://raw.githubusercontent.com/obra/superpowers/main/SKILL.md"
+
+
+def test_raw_url_for_already_raw():
+    url = "https://raw.githubusercontent.com/x/y/main/SKILL.md"
+    assert raw_url_for(url) == url
+
+
+def test_raw_url_for_plain_md():
+    url = "https://example.com/skills/thing.md"
+    assert raw_url_for(url) == url
+
+
+def test_raw_url_for_repo_root_returns_none():
+    assert raw_url_for("https://github.com/obra/superpowers") is None
