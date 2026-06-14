@@ -1,0 +1,96 @@
+name: Add a skill
+description: Submit a skill to the catalog — we store a link + metadata only (host your skill in your own repo/gist).
+title: "Add skill: "
+labels: ["add-skill"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing a skill! We **link** to your skill — we do not copy its code.
+        Host it in your own repo or gist and paste the link below. When you submit, a bot
+        validates the entry, runs a security scan, and opens a pull request for review.
+  - type: input
+    id: name
+    attributes:
+      label: Skill name
+      description: kebab-case id (a-z, 0-9, hyphens), e.g. my-cool-skill
+      placeholder: my-cool-skill
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL
+      description: Link to your skill (repo, gist, or raw file)
+      placeholder: https://github.com/you/your-skill
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Author
+      placeholder: Your Name (@handle)
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: The source's license, or "unknown"
+      placeholder: MIT
+    validations:
+      required: true
+  - type: dropdown
+    id: agents
+    attributes:
+      label: Agents
+      description: Which agents the skill works with
+      multiple: true
+      options:
+        - claude-code
+        - codex
+        - cursor
+        - any
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - coding
+        - research
+        - writing
+        - data
+        - devops
+        - workflow
+        - meta
+    validations:
+      required: true
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: One line
+    validations:
+      required: true
+  - type: textarea
+    id: use_cases
+    attributes:
+      label: Use cases
+      description: When to use it — one per line
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why recommend it
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Optional longer description, notes, caveats
+    validations:
+      required: false

@@ -1,0 +1,66 @@
+name: add-skill-from-issue
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  scaffold:
+    if: github.event.label.name == 'add-skill'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Build entry from issue
+        id: build
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: |
+          name="$(python scripts/entry_from_issue.py)"
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          python scripts/build_readme.py
+      - name: Validate entry
+        run: python scripts/validate_entries.py entries/
+      - name: Security scan
+        id: scan
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          out="$(python scripts/security_scan.py entries/ 2>&1 || true)"
+          echo "$out"
+          { echo "report<<SCAN_EOF"; echo "$out"; echo "SCAN_EOF"; } >> "$GITHUB_OUTPUT"
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SKILL_NAME: ${{ steps.build.outputs.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          SCAN_REPORT: ${{ steps.scan.outputs.report }}
+        run: |
+          branch="add-skill/$ISSUE_NUMBER"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add entries/ README.md
+          git commit -m "add skill: $SKILL_NAME (from #$ISSUE_NUMBER)"
+          git push -u origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Add skill: $SKILL_NAME (from #$ISSUE_NUMBER)" \
+            --body "$(printf 'Auto-generated from issue #%s. Closes #%s.\n\nSecurity scan:\n```\n%s\n```\n\nReviewer: confirm source/author/license cited, no third-party code copied, and the scan is clean.' "$ISSUE_NUMBER" "$ISSUE_NUMBER" "$SCAN_REPORT")"
+          gh issue comment "$ISSUE_NUMBER" --body "Thanks! I've opened a pull request from your submission for maintainer review."
+      - name: Report failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "I couldn't auto-create the entry from this issue. Please check the required fields — name must be kebab-case (a-z, 0-9, hyphens), and Source URL / Author / License / Agents / Category / Summary / Use cases / Why are all required. Edit the issue and re-add the 'add-skill' label to retry, or open a pull request manually (see CONTRIBUTING.md)."

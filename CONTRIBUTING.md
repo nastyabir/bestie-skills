@@ -5,10 +5,33 @@ Thanks for adding a skill! This is a **links-only catalog**. The golden rule:
 > **Link, never copy.** Do not paste a third-party skill's code into this repo.
 > Add metadata and a link to the original source, crediting its author and license.
 
-## Add a skill
+Host your skill in your own repo or gist, then add a catalog entry that links to it.
+There are three ways to do that — pick whichever is easiest.
 
-1. Create `entries/<skill-name>.md` (kebab-case; `<skill-name>` must equal the
-   `name` field).
+## 1. Web form (easiest — no git needed)
+
+Open a **[New issue → Add a skill](../../issues/new?template=add-skill.yml)**, fill in the
+fields, and submit. A bot validates your entry, runs the security scan, and opens a pull
+request for you automatically. A maintainer reviews and merges.
+
+## 2. Scaffold script (if you've cloned the repo)
+
+```bash
+python scripts/new_skill.py
+```
+
+It asks for each field, writes `entries/<name>.md`, regenerates the README, and validates.
+Then commit and open a pull request:
+
+```bash
+git add entries/<name>.md README.md
+git commit -m "add skill: <name>"
+git push   # then open a PR
+```
+
+## 3. By hand
+
+1. Create `entries/<skill-name>.md` (kebab-case; `<skill-name>` must equal the `name` field).
 2. Fill the frontmatter. All fields are required:
 
    | Field | Meaning |
@@ -27,21 +50,9 @@ Thanks for adding a skill! This is a **links-only catalog**. The golden rule:
    | `added_by` | your handle |
    | `added_date` | `YYYY-MM-DD` |
 
-3. Regenerate the README:
-
-   ```bash
-   python scripts/build_readme.py
-   ```
-
-4. Validate locally:
-
-   ```bash
-   python scripts/validate_entries.py entries/
-   python scripts/security_scan.py entries/
-   ```
-
-5. Open a PR. CI runs validation, the README freshness check, and the security
-   scan. A maintainer reviews and merges.
+3. Regenerate the README: `python scripts/build_readme.py`
+4. Validate: `python scripts/validate_entries.py entries/` and `python scripts/security_scan.py entries/`
+5. Open a PR. CI runs validation, the README freshness check, and the security scan. A maintainer reviews and merges.
 
 ## Review criteria
 
