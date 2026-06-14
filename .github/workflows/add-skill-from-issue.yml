@@ -63,4 +63,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
-          gh issue comment "$ISSUE_NUMBER" --body "I couldn't auto-create the entry from this issue. Please check the required fields — name must be kebab-case (a-z, 0-9, hyphens), and Source URL / Author / License / Agents / Category / Summary / Use cases / Why are all required. Edit the issue and re-add the 'add-skill' label to retry, or open a pull request manually (see CONTRIBUTING.md)."
+          gh issue comment "$ISSUE_NUMBER" --body "I couldn't auto-create the entry from this issue. Common causes: a missing or malformed required field (name must be kebab-case a-z/0-9/hyphens; Source URL, Author, License, Agents, Category, Tags, Summary, Use cases and Why are all required), or a skill with this name already exists. Fix the issue and re-add the 'add-skill' label to retry, or open a pull request manually (see CONTRIBUTING.md)."
