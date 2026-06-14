@@ -42,6 +42,7 @@ git push   # then open a PR
    | `license` | the source's license (or `unknown`) |
    | `agents` | any of: `claude-code`, `codex`, `cursor`, `any` |
    | `category` | `coding`, `research`, `writing`, `data`, `devops`, `workflow`, `meta` |
+   | `tags` | topic tags, ≥1 (e.g. `marketing`, `design`, `ai-productivity`) |
    | `summary` | one line |
    | `use_cases` | when to use it (>=1) |
    | `why` | why it is recommended |

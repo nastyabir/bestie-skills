@@ -5,7 +5,7 @@ $ISSUE_AUTHOR, writes entries/<name>.md, and prints the skill name on stdout.
 """
 import os
 
-from new_skill import create_entry, split_list
+from new_skill import create_entry, split_list, normalize_tags
 
 LABEL_TO_FIELD = {
     "Skill name": "name",
@@ -14,6 +14,7 @@ LABEL_TO_FIELD = {
     "License": "license",
     "Agents": "agents",
     "Category": "category",
+    "Tags": "tags",
     "Summary": "summary",
     "Use cases": "use_cases",
     "Why recommend it": "why",
@@ -50,6 +51,7 @@ def fields_from_issue(parsed, *, added_by):
         "license": parsed.get("license", "").strip() or "unknown",
         "agents": split_list(parsed.get("agents", "")),
         "category": parsed.get("category", "").strip(),
+        "tags": normalize_tags(split_list(parsed.get("tags", ""))),
         "summary": parsed.get("summary", "").strip(),
         "use_cases": split_list(parsed.get("use_cases", "")),
         "why": parsed.get("why", "").strip(),

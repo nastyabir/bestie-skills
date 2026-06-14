@@ -4,6 +4,7 @@ ENTRY_A = {
     "frontmatter": {
         "name": "alpha", "source_url": "https://e.com/a", "author": "a",
         "license": "MIT", "agents": ["claude-code"], "category": "coding",
+        "tags": ["coding", "ai-productivity"],
         "summary": "Alpha skill.", "use_cases": ["x"], "why": "w",
         "status": "tested", "security": "pass",
         "added_by": "n", "added_date": "2026-06-15",
@@ -14,6 +15,7 @@ ENTRY_B = {
     "frontmatter": {
         "name": "beta", "source_url": "https://e.com/b", "author": "b",
         "license": "MIT", "agents": ["codex"], "category": "workflow",
+        "tags": ["workflow"],
         "summary": "Beta skill.", "use_cases": ["y"], "why": "w",
         "status": "untested", "security": "manual-review",
         "added_by": "n", "added_date": "2026-06-15",
@@ -44,3 +46,15 @@ def test_render_shows_agents_and_badges():
     assert "codex" in out
     assert "untested" in out
     assert "manual-review" in out
+
+
+def test_render_has_topic_index():
+    out = render_readme([ENTRY_A, ENTRY_B])
+    assert "## Browse by topic" in out
+    assert "**ai-productivity**" in out
+    assert "[alpha](https://e.com/a)" in out
+
+
+def test_render_row_includes_tags():
+    out = render_readme([ENTRY_A])
+    assert "ai-productivity" in out

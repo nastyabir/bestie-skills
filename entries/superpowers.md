@@ -6,6 +6,10 @@ license: MIT
 agents:
   - claude-code
 category: workflow
+tags:
+  - ai-productivity
+  - engineering
+  - workflow
 summary: Discipline skills — brainstorming, planning, TDD, debugging, code review.
 use_cases:
   - Structure feature work via brainstorm to plan to TDD

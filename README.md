@@ -12,6 +12,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) to add a skill. Licensed under MIT.
 
 ## workflow
 
-| Skill | Summary | Agents | Status | Security |
-| --- | --- | --- | --- | --- |
-| [superpowers](https://github.com/obra/superpowers) | Discipline skills — brainstorming, planning, TDD, debugging, code review. | claude-code | `tested` | `manual-review` |
+| Skill | Summary | Agents | Tags | Status | Security |
+| --- | --- | --- | --- | --- | --- |
+| [superpowers](https://github.com/obra/superpowers) | Discipline skills — brainstorming, planning, TDD, debugging, code review. | claude-code | ai-productivity, engineering, workflow | `tested` | `manual-review` |
+
+## Browse by topic
+
+- **ai-productivity** — [superpowers](https://github.com/obra/superpowers)
+- **engineering** — [superpowers](https://github.com/obra/superpowers)
+- **workflow** — [superpowers](https://github.com/obra/superpowers)

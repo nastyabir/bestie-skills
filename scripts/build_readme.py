@@ -28,8 +28,9 @@ def _row(fm):
     name = fm["name"]
     link = f"[{name}]({fm['source_url']})"
     agents = ", ".join(fm["agents"])
+    tags = ", ".join(fm.get("tags", []))
     return (
-        f"| {link} | {fm['summary']} | {agents} | "
+        f"| {link} | {fm['summary']} | {agents} | {tags} | "
         f"`{fm['status']}` | `{fm['security']}` |"
     )
 
@@ -46,10 +47,25 @@ def render_readme(entries):
     ordered += [c for c in sorted(by_cat) if c not in CATEGORY_ORDER]
     for cat in ordered:
         parts.append(f"## {cat}\n")
-        parts.append("| Skill | Summary | Agents | Status | Security |")
-        parts.append("| --- | --- | --- | --- | --- |")
+        parts.append("| Skill | Summary | Agents | Tags | Status | Security |")
+        parts.append("| --- | --- | --- | --- | --- | --- |")
         for fm in sorted(by_cat[cat], key=lambda f: f["name"]):
             parts.append(_row(fm))
+        parts.append("")
+
+    tag_map = {}
+    for entry in entries:
+        fm = entry["frontmatter"]
+        for tag in fm.get("tags", []):
+            tag_map.setdefault(tag, []).append(fm)
+    if tag_map:
+        parts.append("## Browse by topic\n")
+        for tag in sorted(tag_map):
+            links = ", ".join(
+                f"[{fm['name']}]({fm['source_url']})"
+                for fm in sorted(tag_map[tag], key=lambda f: f["name"])
+            )
+            parts.append(f"- **{tag}** — {links}")
         parts.append("")
     return "\n".join(parts).rstrip() + "\n"
 

@@ -9,6 +9,7 @@ from validate_entries import load_schema, validate_entry
 GOOD = {
     "name": "demo", "source_url": "https://e.com/s", "author": "a",
     "license": "MIT", "agents": ["claude-code"], "category": "workflow",
+    "tags": ["workflow", "ai-productivity"],
     "summary": "s", "use_cases": ["u1", "u2"], "why": "w",
     "added_by": "nastyabir", "added_date": "2026-06-15", "body": "hello world",
 }
@@ -45,3 +46,8 @@ def test_create_entry_writes_then_refuses_overwrite(tmp_path):
 def test_create_entry_rejects_bad_name(tmp_path):
     with pytest.raises(ValueError):
         create_entry(dict(GOOD, name="../evil"), entries_dir=tmp_path)
+
+
+def test_normalize_tags_slugifies():
+    from new_skill import normalize_tags
+    assert normalize_tags(["AI Productivity", " Design ", ""]) == ["ai-productivity", "design"]

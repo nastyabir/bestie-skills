@@ -29,6 +29,10 @@ claude-code, codex
 
 workflow
 
+### Tags
+
+ai-productivity, Marketing
+
 ### Summary
 
 Does a useful thing.
@@ -65,3 +69,4 @@ def test_fields_from_issue_builds_schema_valid_entry():
     assert validate_entry(entry, load_schema()) == []
     assert fm["agents"] == ["claude-code", "codex"]
     assert fm["use_cases"] == ["Thing one", "Thing two"]
+    assert fm["tags"] == ["ai-productivity", "marketing"]

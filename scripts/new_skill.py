@@ -15,7 +15,11 @@ ENTRIES_DIR = ROOT / "entries"
 
 CATEGORIES = ["coding", "research", "writing", "data", "devops", "workflow", "meta"]
 AGENTS = ["claude-code", "codex", "cursor", "any"]
-FIELD_ORDER = ["name", "source_url", "author", "license", "agents", "category",
+RECOMMENDED_TAGS = ["marketing", "design", "sales", "ai-productivity", "research",
+                    "data-analysis", "engineering", "writing", "content",
+                    "automation", "devops", "product", "finance", "support",
+                    "education"]
+FIELD_ORDER = ["name", "source_url", "author", "license", "agents", "category", "tags",
                "summary", "use_cases", "why", "status", "security",
                "added_by", "added_date"]
 _NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
@@ -57,6 +61,16 @@ def split_list(text):
     return [p.strip() for p in parts if p.strip()]
 
 
+def slugify(text):
+    """Lowercase a free-form tag into a [a-z0-9-] slug."""
+    return re.sub(r"[^a-z0-9]+", "-", (text or "").strip().lower()).strip("-")
+
+
+def normalize_tags(items):
+    """Slugify a list of raw tag strings, dropping empties."""
+    return [t for t in (slugify(i) for i in items) if t]
+
+
 def _prompt(label, *, required=True, choices=None):
     while True:
         val = input(f"{label}: ").strip()
@@ -87,6 +101,13 @@ def main():
             print(f"  pick at least one of {AGENTS}")
     fields["agents"] = agents
     fields["category"] = _prompt(f"Category {CATEGORIES}", choices=CATEGORIES)
+    print(f"Tags — topic tags, comma-separated. Suggested: {RECOMMENDED_TAGS}")
+    tags = []
+    while not tags:
+        tags = normalize_tags(split_list(input("  tags: ")))
+        if not tags:
+            print("  add at least one tag")
+    fields["tags"] = tags
     fields["summary"] = _prompt("One-line summary")
     use_cases = split_list(input("Use cases (comma- or newline-separated): "))
     fields["use_cases"] = use_cases or [_prompt("One use case")]
