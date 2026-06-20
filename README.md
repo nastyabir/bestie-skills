@@ -36,19 +36,22 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 
 | Skill | Author | Summary | Agents | Tags | Status | Security |
 | --- | --- | --- | --- | --- | --- | --- |
+| [ax-extract-workflow](https://github.com/Necmttn/ax/blob/main/skills/ax-extract-workflow/SKILL.md) | [Necmttn](https://github.com/Necmttn) | Reconstruct shipped coding-agent workflows from local ax sessions, commits, skills, and subagent delegations. | claude-code, codex | workflow, ai-productivity, observability, session-recall | `untested` | `manual-review` |
 | [superpowers](https://github.com/obra/superpowers) | [obra (Jesse Vincent)](https://github.com/obra) | Discipline skills — brainstorming, planning, TDD, debugging, code review. | claude-code | ai-productivity, engineering, workflow | `tested` | `manual-review` |
 
 ## Browse by topic
 
 - **1c** — [cc-1c-skills](https://github.com/Nikolay-Shirokov/cc-1c-skills)
 - **ab-testing** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
-- **ai-productivity** — [superpowers](https://github.com/obra/superpowers)
+- **ai-productivity** — [ax-extract-workflow](https://github.com/Necmttn/ax/blob/main/skills/ax-extract-workflow/SKILL.md), [superpowers](https://github.com/obra/superpowers)
 - **data-analysis** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **engineering** — [cc-1c-skills](https://github.com/Nikolay-Shirokov/cc-1c-skills), [superpowers](https://github.com/obra/superpowers)
 - **experimentation** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
+- **observability** — [ax-extract-workflow](https://github.com/Necmttn/ax/blob/main/skills/ax-extract-workflow/SKILL.md)
 - **product-analytics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
+- **session-recall** — [ax-extract-workflow](https://github.com/Necmttn/ax/blob/main/skills/ax-extract-workflow/SKILL.md)
 - **statistics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
-- **workflow** — [superpowers](https://github.com/obra/superpowers)
+- **workflow** — [ax-extract-workflow](https://github.com/Necmttn/ax/blob/main/skills/ax-extract-workflow/SKILL.md), [superpowers](https://github.com/obra/superpowers)
 
 ---
 
