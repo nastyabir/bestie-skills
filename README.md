@@ -26,6 +26,12 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 | --- | --- | --- | --- | --- | --- | --- |
 | [cc-1c-skills](https://github.com/Nikolay-Shirokov/cc-1c-skills) | [@Nikolay-Shirokov](https://github.com/Nikolay-Shirokov) | Навыки для 1С | any | engineering, 1c | `untested` | `manual-review` |
 
+## writing
+
+| Skill | Author | Summary | Agents | Tags | Status | Security |
+| --- | --- | --- | --- | --- | --- | --- |
+| [stop-slop](https://github.com/hardikpandya/stop-slop) | [@hardikpandya](https://github.com/hardikpandya) | Prevent ai slop | any | ai-productivity | `untested` | `manual-review` |
+
 ## data
 
 | Skill | Author | Summary | Agents | Tags | Status | Security |
@@ -42,7 +48,7 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 
 - **1c** — [cc-1c-skills](https://github.com/Nikolay-Shirokov/cc-1c-skills)
 - **ab-testing** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
-- **ai-productivity** — [superpowers](https://github.com/obra/superpowers)
+- **ai-productivity** — [stop-slop](https://github.com/hardikpandya/stop-slop), [superpowers](https://github.com/obra/superpowers)
 - **data-analysis** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **engineering** — [cc-1c-skills](https://github.com/Nikolay-Shirokov/cc-1c-skills), [superpowers](https://github.com/obra/superpowers)
 - **experimentation** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
