@@ -31,6 +31,7 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 | Skill | Author | Summary | Agents | Tags | Status | Security |
 | --- | --- | --- | --- | --- | --- | --- |
 | [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md) | [nastyabir](https://github.com/nastyabir) | Design and analyze A/B tests rigorously — sample-size/MDE calculation plus a full statistical-analysis pipeline that picks the statistically correct test instead of a naive default. | claude-code | ab-testing, statistics, experimentation, data-analysis, product-analytics | `tested` | `manual-review` |
+| [x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/blob/master/skills/x-twitter-scraper/SKILL.md) | [Xquik](https://github.com/Xquik-dev) | Use Xquik for bounded X data workflows, MCP setup, webhooks, monitoring, and confirmation-gated publishing. | codex | x-api, twitter, social-media, monitoring, webhooks | `untested` | `manual-review` |
 
 ## workflow
 
@@ -46,9 +47,14 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 - **data-analysis** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **engineering** — [cc-1c-skills](https://github.com/Nikolay-Shirokov/cc-1c-skills), [superpowers](https://github.com/obra/superpowers)
 - **experimentation** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
+- **monitoring** — [x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/blob/master/skills/x-twitter-scraper/SKILL.md)
 - **product-analytics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
+- **social-media** — [x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/blob/master/skills/x-twitter-scraper/SKILL.md)
 - **statistics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
+- **twitter** — [x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/blob/master/skills/x-twitter-scraper/SKILL.md)
+- **webhooks** — [x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/blob/master/skills/x-twitter-scraper/SKILL.md)
 - **workflow** — [superpowers](https://github.com/obra/superpowers)
+- **x-api** — [x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/blob/master/skills/x-twitter-scraper/SKILL.md)
 
 ---
 
