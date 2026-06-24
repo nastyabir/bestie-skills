@@ -26,6 +26,12 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 | --- | --- | --- | --- | --- | --- | --- |
 | [cc-1c-skills](https://github.com/Nikolay-Shirokov/cc-1c-skills) | [@Nikolay-Shirokov](https://github.com/Nikolay-Shirokov) | Навыки для 1С | any | engineering, 1c | `untested` | `manual-review` |
 
+## research
+
+| Skill | Author | Summary | Agents | Tags | Status | Security |
+| --- | --- | --- | --- | --- | --- | --- |
+| [llm-council](https://github.com/nastyabir/llm-council-skill) | [nastyabir — port of Andrej Karpathy's llm-council](https://github.com/nastyabir) | Ask a question to a council of frontier LLMs (GPT 5.5, Gemini 3.1 Pro, Grok 4.3, Claude Opus 4.8) via OpenRouter; they anonymously peer-review each other's answers and a chairman model synthesizes one final answer. | claude-code | llm, multi-model, openrouter, peer-review, ensemble, ai-productivity | `untested` | `manual-review` |
+
 ## data
 
 | Skill | Author | Summary | Agents | Tags | Status | Security |
@@ -42,10 +48,15 @@ generate every field. Prefer the command line or doing it by hand? Those paths a
 
 - **1c** — [cc-1c-skills](https://github.com/Nikolay-Shirokov/cc-1c-skills)
 - **ab-testing** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
-- **ai-productivity** — [superpowers](https://github.com/obra/superpowers)
+- **ai-productivity** — [llm-council](https://github.com/nastyabir/llm-council-skill), [superpowers](https://github.com/obra/superpowers)
 - **data-analysis** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **engineering** — [cc-1c-skills](https://github.com/Nikolay-Shirokov/cc-1c-skills), [superpowers](https://github.com/obra/superpowers)
+- **ensemble** — [llm-council](https://github.com/nastyabir/llm-council-skill)
 - **experimentation** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
+- **llm** — [llm-council](https://github.com/nastyabir/llm-council-skill)
+- **multi-model** — [llm-council](https://github.com/nastyabir/llm-council-skill)
+- **openrouter** — [llm-council](https://github.com/nastyabir/llm-council-skill)
+- **peer-review** — [llm-council](https://github.com/nastyabir/llm-council-skill)
 - **product-analytics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **statistics** — [ab-test](https://github.com/nastyabir/ab-test-skill/blob/main/ab-test.md)
 - **workflow** — [superpowers](https://github.com/obra/superpowers)
